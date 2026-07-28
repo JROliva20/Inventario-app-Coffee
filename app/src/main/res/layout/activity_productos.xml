@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/cafe_claro"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/inventory"
+        app:tint="@color/blanco" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INVENTARIO"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/blanco"
+        android:layout_marginTop="15dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/blanco"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAgregar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_gravity="end"
+        app:icon="@drawable/mas"
+        app:iconTint="@color/blanco"
+        app:iconGravity="textStart"
+        app:iconSize="32dp"
+        app:strokeWidth="0dp" />
+
+    <ListView
+        android:id="@+id/lvProductos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="1dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEditar"
+        style="@style/Widget.Material3.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="Editar"
+        app:icon="@drawable/edit"
+        android:textColor="@color/cafe_oscuro"
+        app:backgroundTint="@color/blanco"
+        app:iconTint="@color/cafe_oscuro"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEliminar"
+        style="@style/Widget.Material3.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="Eliminar"
+        app:icon="@drawable/delete"
+        android:textColor="@color/cafe_oscuro"
+        app:backgroundTint="@color/blanco"
+        app:iconTint="@color/cafe_oscuro"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelar"
+            style="@style/Widget.Material3.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="Cancelar"
+            app:icon="@android:drawable/ic_menu_close_clear_cancel"
+            app:iconTint="@color/cafe_oscuro"
+            android:textColor="@color/cafe_oscuro"
+            app:backgroundTint="@color/blanco"/>
+
+    </LinearLayout>
+
+</LinearLayout>

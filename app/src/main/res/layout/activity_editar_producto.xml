@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/cafe_claro"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/edit"
+        android:layout_marginTop="20dp"
+        app:tint="@color/blanco" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:text="Editar producto"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/blanco"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilNombre"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Nombre del Producto:"
+        app:startIconDrawable="@drawable/coffee"
+        app:startIconTint="@color/blanco"
+        app:boxStrokeColor="@color/blanco"
+        app:hintTextColor="@color/blanco">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCategoria"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Categoria:"
+        app:startIconDrawable="@drawable/categoria"
+        app:startIconTint="@color/blanco"
+        app:boxStrokeColor="@color/blanco"
+        app:hintTextColor="@color/blanco">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCantidad"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Cantidad:"
+        app:startIconDrawable="@drawable/box"
+        app:startIconTint="@color/blanco"
+        app:boxStrokeColor="@color/blanco"
+        app:hintTextColor="@color/blanco">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCantidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPrecio"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Precio:"
+        app:startIconDrawable="@drawable/precio"
+        app:startIconTint="@color/blanco"
+        app:boxStrokeColor="@color/blanco"
+        app:hintTextColor="@color/blanco">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilProveedor"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Proveedor:"
+        app:startIconDrawable="@drawable/provedor"
+        app:startIconTint="@color/blanco"
+        app:boxStrokeColor="@color/blanco"
+        app:hintTextColor="@color/blanco">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etProveedor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnActualizar"
+            style="@style/Widget.Material3.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:text="Actualizar"
+            app:icon="@android:drawable/ic_popup_sync"
+            app:iconTint="@color/cafe_oscuro"
+            android:textColor="@color/cafe_oscuro"
+            app:backgroundTint="@color/blanco"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelar"
+            style="@style/Widget.Material3.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:text="Cancelar"
+            app:icon="@android:drawable/ic_menu_close_clear_cancel"
+            app:iconTint="@color/cafe_oscuro"
+            android:textColor="@color/cafe_oscuro"
+            app:backgroundTint="@color/blanco"/>
+
+    </LinearLayout>
+
+</LinearLayout>

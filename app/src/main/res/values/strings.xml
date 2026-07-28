@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AppInventario</string>
+
+    <string name="acerca_de">
+Desarrollado por:
+Junnior Noé Oliva Gudiel
+
+The Corral Coffee
+
+Versión 1.0
+
+INTECAP
+Desarrollo de Aplicaciones con Conexión a Base de Datos
+</string>
+
+</resources>
+
