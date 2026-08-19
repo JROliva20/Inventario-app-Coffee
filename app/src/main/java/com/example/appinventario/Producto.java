@@ -7,6 +7,7 @@ public class Producto {
     private int cantidad;
     private double precio;
     private String proveedor;
+    private String imagenUri;
 
     public Producto() {
     }
@@ -17,6 +18,15 @@ public class Producto {
         this.cantidad = cantidad;
         this.precio = precio;
         this.proveedor = proveedor;
+    }
+
+    public Producto(String nombre, String categoria, int cantidad, double precio, String proveedor, String imagenUri) {
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.proveedor = proveedor;
+        this.imagenUri = imagenUri;
     }
 
     public String getNombre() {
@@ -59,4 +69,11 @@ public class Producto {
         this.proveedor = proveedor;
     }
 
+    public String getImagenUri() {
+        return imagenUri;
+    }
+
+    public void setImagenUri(String imagenUri) {
+        this.imagenUri = imagenUri;
+    }
 }

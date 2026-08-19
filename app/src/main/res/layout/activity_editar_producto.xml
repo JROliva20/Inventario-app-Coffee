@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/cafe_claro"
-    android:padding="20dp">
+    android:background="@color/cafe_claro">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
         android:src="@drawable/edit"
         android:layout_marginTop="20dp"
@@ -25,6 +29,46 @@
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/blanco"/>
+
+        <ImageView
+            android:id="@+id/imgProducto"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/photo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGaleria"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Galería"
+                android:textColor="@color/cafe_oscuro"
+                app:backgroundTint="@color/crema"
+                app:icon="@android:drawable/ic_menu_gallery"
+                app:iconTint="@color/cafe_oscuro" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCamara"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Cámara"
+                android:textColor="@color/cafe_oscuro"
+                app:backgroundTint="@color/crema"
+                app:icon="@android:drawable/ic_menu_camera"
+                app:iconTint="@color/cafe_oscuro" />
+
+        </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilNombre"
@@ -153,5 +197,6 @@
             app:backgroundTint="@color/blanco"/>
 
     </LinearLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

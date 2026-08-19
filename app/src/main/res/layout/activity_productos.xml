@@ -34,16 +34,67 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAgregar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="end"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@android:color/transparent"
         app:icon="@drawable/mas"
-        app:iconTint="@color/blanco"
         app:iconGravity="textStart"
         app:iconSize="32dp"
+        app:iconTint="@color/blanco"
         app:strokeWidth="0dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilBuscar"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Buscar producto"
+        app:startIconDrawable="@android:drawable/ic_menu_search"
+        app:startIconTint="@color/blanco"
+        app:boxStrokeColor="@color/blanco"
+        app:hintTextColor="@color/blanco">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvNoEncontrado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Producto no encontrado"
+        android:textColor="@color/blanco"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:text="Ordenar por:"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spOrdenar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="5dp" />
+
 
     <ListView
         android:id="@+id/lvProductos"
@@ -52,49 +103,18 @@
         android:layout_weight="1"
         android:layout_marginTop="1dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="20dp">
-
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnEditar"
+        android:id="@+id/btnRegresar"
         style="@style/Widget.Material3.Button.TextButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:text="Editar"
-        app:icon="@drawable/edit"
+        android:layout_gravity="center"
+        android:text="Regresar"
+        app:icon="@android:drawable/ic_menu_close_clear_cancel"
+        app:iconTint="@color/cafe_oscuro"
         android:textColor="@color/cafe_oscuro"
-        app:backgroundTint="@color/blanco"
-        app:iconTint="@color/cafe_oscuro"/>
+        app:backgroundTint="@color/blanco"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnEliminar"
-        style="@style/Widget.Material3.Button.TextButton.Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:text="Eliminar"
-        app:icon="@drawable/delete"
-        android:textColor="@color/cafe_oscuro"
-        app:backgroundTint="@color/blanco"
-        app:iconTint="@color/cafe_oscuro"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCancelar"
-            style="@style/Widget.Material3.Button.TextButton.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:text="Cancelar"
-            app:icon="@android:drawable/ic_menu_close_clear_cancel"
-            app:iconTint="@color/cafe_oscuro"
-            android:textColor="@color/cafe_oscuro"
-            app:backgroundTint="@color/blanco"/>
-
-    </LinearLayout>
 
 </LinearLayout>
