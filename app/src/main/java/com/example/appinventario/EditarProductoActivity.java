@@ -36,7 +36,12 @@ public class EditarProductoActivity extends AppCompatActivity {
     MaterialButton btnGaleria, btnCamara;
     ImageView imgProducto;
 
-    int posicion;
+    // BD
+    ProductoDbHelper dbHelper;
+
+    // id
+    long idProducto;
+
     Producto producto;
     Uri imagenSeleccionada;
 
@@ -84,14 +89,21 @@ public class EditarProductoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_editar_producto);
-        // RECIBIR LA POSICIÓN DEL PRODUCTO
-        posicion = getIntent().getIntExtra("posicion", -1);
-        if (posicion == -1) {
+//conectamos con sql lite
+        dbHelper = new ProductoDbHelper(this);
+
+// recibimos id
+        idProducto = getIntent().getLongExtra("id", -1);
+        if (idProducto == -1) {
             finish();
             return;
         }
-        // creamos el producto
-        producto = Datos.listaProductos.get(posicion);
+// obtenemos producto desde sqlite
+        producto = dbHelper.obtenerProductoPorId(idProducto);
+        if (producto == null) {
+            finish();
+            return;
+        }
         // conectamos xml con java
         etNombre = findViewById(R.id.etNombre);
         etCategoria = findViewById(R.id.etCategoria);
@@ -239,6 +251,7 @@ public class EditarProductoActivity extends AppCompatActivity {
                         imagenSeleccionada.toString()
                 );
             }
+            dbHelper.actualizarProducto(producto);
             Toast.makeText(
                     this,
                     "Producto actualizado correctamente",

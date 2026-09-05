@@ -1,7 +1,7 @@
 package com.example.appinventario;
 
 public class Producto {
-
+    private long id;
     private String nombre;
     private String categoria;
     private int cantidad;
@@ -75,5 +75,11 @@ public class Producto {
 
     public void setImagenUri(String imagenUri) {
         this.imagenUri = imagenUri;
+    }
+
+    public long getId() {return id;
+    }
+
+    public void setId(long id) {this.id = id;
     }
 }

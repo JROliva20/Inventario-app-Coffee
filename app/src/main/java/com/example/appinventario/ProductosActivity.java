@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -29,23 +30,49 @@ import java.util.ArrayList;
 
 public class ProductosActivity extends AppCompatActivity {
 
-
-
     MaterialButton btnAgregar;
     MaterialButton btnRegresar;
-    ListView lvProductos;
-    ArrayList<String> lista;
-    ArrayAdapter<String> adapter;
+
+    //NUEVAS VARIABLES
+    RecyclerView rvProductos;
+    ProductoAdapter adapter;
+    ArrayList<Producto> productosMostrados;
+
+    ProductoDbHelper dbHelper;
     TextInputEditText etBuscar;
     TextView tvNoEncontrado;
     Spinner spOrdenar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_productos);
-        lvProductos = findViewById(R.id.lvProductos);
+
+        //IMPLEMENTAMOS RECYCLERVIEW
+        rvProductos = findViewById(R.id.rvProductos);
+        rvProductos.setLayoutManager(new LinearLayoutManager(this));
+
+        dbHelper = new ProductoDbHelper(this);
+        productosMostrados = dbHelper.obtenerProductos();
+
+        //creamos el adapter y definimos la accion seleccionada
+        adapter = new ProductoAdapter(productosMostrados, producto -> {
+            // se obtiene el id q sql le asigno al producto
+            long id = producto.getId();
+            Intent intent = new Intent(
+                    ProductosActivity.this,
+                    DetalleProductoActivity.class
+            );
+            // enviar id al detalle
+            intent.putExtra("id", id);
+
+            startActivity(intent);
+        });
+
+        rvProductos.setAdapter(adapter);
+
         etBuscar = findViewById(R.id.etBuscar);
         spOrdenar = findViewById(R.id.spOrdenar);
         String[] opcionesOrden = {
@@ -78,7 +105,7 @@ public class ProductosActivity extends AppCompatActivity {
                         if (position == 0) {
 
                             // Nombre A-Z
-                            Datos.listaProductos.sort(
+                            productosMostrados.sort(
                                     Comparator.comparing(
                                             Producto::getNombre,
                                             String.CASE_INSENSITIVE_ORDER
@@ -88,7 +115,7 @@ public class ProductosActivity extends AppCompatActivity {
                         } else if (position == 1) {
 
                             // Nombre Z-A
-                            Datos.listaProductos.sort(
+                            productosMostrados.sort(
                                     Comparator.comparing(
                                             Producto::getNombre,
                                             String.CASE_INSENSITIVE_ORDER
@@ -98,7 +125,7 @@ public class ProductosActivity extends AppCompatActivity {
                         } else if (position == 2) {
 
                             // Precio menor a mayor
-                            Datos.listaProductos.sort(
+                            productosMostrados.sort(
                                     Comparator.comparingDouble(
                                             Producto::getPrecio
                                     )
@@ -107,7 +134,7 @@ public class ProductosActivity extends AppCompatActivity {
                         } else if (position == 3) {
 
                             // Precio mayor a menor
-                            Datos.listaProductos.sort(
+                            productosMostrados.sort(
                                     Comparator.comparingDouble(
                                             Producto::getPrecio
                                     ).reversed()
@@ -116,7 +143,7 @@ public class ProductosActivity extends AppCompatActivity {
                         } else if (position == 4) {
 
                             // Cantidad menor a mayor
-                            Datos.listaProductos.sort(
+                            productosMostrados.sort(
                                     Comparator.comparingInt(
                                             Producto::getCantidad
                                     )
@@ -125,7 +152,7 @@ public class ProductosActivity extends AppCompatActivity {
                         } else if (position == 5) {
 
                             // Cantidad mayor a menor
-                            Datos.listaProductos.sort(
+                            productosMostrados.sort(
                                     Comparator.comparingInt(
                                             Producto::getCantidad
                                     ).reversed()
@@ -143,22 +170,6 @@ public class ProductosActivity extends AppCompatActivity {
         );
 
         tvNoEncontrado = findViewById(R.id.tvNoEncontrado);
-        lista = new ArrayList<>();
-        for (Producto p : Datos.listaProductos) {
-            lista.add(
-                    "Nombre: " + p.getNombre() +
-                            "\nCategoría: " + p.getCategoria() +
-                            "\nCantidad: " + p.getCantidad() +
-                            "\nPrecio: Q" + p.getPrecio() +
-                            "\nProveedor: " + p.getProveedor()
-            );
-        }
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                lista
-        );
-        lvProductos.setAdapter(adapter);
 
         etBuscar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -168,7 +179,6 @@ public class ProductosActivity extends AppCompatActivity {
                     int count,
                     int after) {
             }
-
             @Override
             public void onTextChanged(
                     CharSequence s,
@@ -178,39 +188,25 @@ public class ProductosActivity extends AppCompatActivity {
                 String texto = s.toString()
                         .trim()
                         .toLowerCase();
-                lista.clear();
-
-                for (Producto p : Datos.listaProductos) {
+                ArrayList<Producto> productosFiltrados = new ArrayList<>();
+                for (Producto p : productosMostrados) {
                     if (p.getNombre().toLowerCase().contains(texto) ||
                             p.getCategoria().toLowerCase().contains(texto) ||
                             p.getProveedor().toLowerCase().contains(texto)) {
-                        lista.add(
-                                "Nombre: " + p.getNombre() +
-                                        "\nCategoría: " + p.getCategoria() +
-                                        "\nCantidad: " + p.getCantidad() +
-                                        "\nPrecio: Q" + p.getPrecio() +
-                                        "\nProveedor: " + p.getProveedor()
-                        );
+                        productosFiltrados.add(p);
                     }
                 }
-                if (lista.isEmpty() && !texto.isEmpty()) {
+                if (productosFiltrados.isEmpty() && !texto.isEmpty()) {
                     tvNoEncontrado.setVisibility(View.VISIBLE);
                 } else {
                     tvNoEncontrado.setVisibility(View.GONE);
                 }
-                adapter.notifyDataSetChanged();
+                adapter.actualizarLista(productosFiltrados);
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
-        lvProductos.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent = new Intent(ProductosActivity.this, DetalleProductoActivity.class);//aca cree la instruccion para ir de un Activtz a otro
-            intent.putExtra("posicion", position); //enviamos la posicion dl producto
-            startActivity(intent);
-        });
+                @Override
+                public void afterTextChanged (Editable s){
+                }
+            });
 
         btnAgregar = findViewById(R.id.btnAgregar);
         btnAgregar.setOnClickListener(v -> {
@@ -230,56 +226,36 @@ public class ProductosActivity extends AppCompatActivity {
         });
 
     }
-    private void actualizarLista() {
 
-        lista.clear();
-
-        for (Producto p : Datos.listaProductos) {
-
-            lista.add(
-                    "Nombre: " + p.getNombre() +
-                            "\nCategoría: " + p.getCategoria() +
-                            "\nCantidad: " + p.getCantidad() +
-                            "\nPrecio: Q" + p.getPrecio() +
-                            "\nProveedor: " + p.getProveedor()
-            );
-        }
-
-        adapter.notifyDataSetChanged();
+    //MAS LIMPIO
+    @Override
+    protected void onResume() {
+        super.onResume();
+        productosMostrados = dbHelper.obtenerProductos();
+        adapter.actualizarLista(productosMostrados);
+        filtrarYOrdenar();
     }
-        @Override
-        protected void onResume() {
-            super.onResume();
-            lista.clear();
-            for (Producto p : Datos.listaProductos) {
-                lista.add(
-                        "Nombre: " + p.getNombre() +
-                                "\nCategoría: " + p.getCategoria() +
-                                "\nCantidad: " + p.getCantidad() +
-                                "\nPrecio: Q" + p.getPrecio() +
-                                "\nProveedor: " + p.getProveedor()
-                );
-            }
-            adapter.notifyDataSetChanged();
-        }
     private void filtrarYOrdenar() {
 
         String texto = etBuscar.getText().toString()
                 .trim()
                 .toLowerCase();
+
+        //EL BUSCADOR CREA UNA LISTA DE OBJETOS
         ArrayList<Producto> productosFiltrados = new ArrayList<>();
 
-        // 1. FILTRAMOS
-        for (Producto p : Datos.listaProductos) {
+        // 1. FILTRAMOS (comprobamos si el texto coicide con nombre,categoria o provedor)
+        for (Producto p : productosMostrados) {
             if (p.getNombre().toLowerCase().contains(texto) ||
                     p.getCategoria().toLowerCase().contains(texto) ||
                     p.getProveedor().toLowerCase().contains(texto)) {
 
+                //AGREGAMOS EL PRODUCTO ENCONTRADO
                 productosFiltrados.add(p);
             }
         }
 
-        // 2. ORDENA
+        // 2. ORDENA(ordenamos la lista filtrada segun la opcion selecionada en el spinner)
         int opcion = spOrdenar.getSelectedItemPosition();
         if (opcion == 0) {
 
@@ -334,28 +310,15 @@ public class ProductosActivity extends AppCompatActivity {
             );
         }
 
-        // 3. NOS MUESTRA
-        lista.clear();
+        // 3. ACTUALIZAMOS LA LISTA
+        adapter.actualizarLista(productosFiltrados);
 
-        for (Producto p : productosFiltrados) {
-
-            lista.add(
-                    "Nombre: " + p.getNombre() +
-                            "\nCategoría: " + p.getCategoria() +
-                            "\nCantidad: " + p.getCantidad() +
-                            "\nPrecio: Q" + p.getPrecio() +
-                            "\nProveedor: " + p.getProveedor()
-            );
-        }
 
         // 4. MENSAJE SI NO HAY RESULTADOS
-        if (lista.isEmpty() && !texto.isEmpty()) {
+        if (productosFiltrados.isEmpty() && !texto.isEmpty()) {
             tvNoEncontrado.setVisibility(View.VISIBLE);
         } else {
             tvNoEncontrado.setVisibility(View.GONE);
         }
-
-        // 5. ACTUALIZAR LISTVIEW
-        adapter.notifyDataSetChanged();
     }
     }

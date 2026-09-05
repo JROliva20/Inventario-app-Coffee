@@ -82,10 +82,15 @@ public class AgregarProductoActivity extends AppCompatActivity {
                         }
                     });
 
+    ProductoDbHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_producto);
+
+        //conexion con la base de datos
+        dbHelper = new ProductoDbHelper(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             int teclado = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom;
@@ -172,7 +177,8 @@ public class AgregarProductoActivity extends AppCompatActivity {
                     proveedor,
                     imagenUri
             );
-            Datos.listaProductos.add(producto);
+            // Guardamos el producto en sqlite
+            dbHelper.insertarProducto(producto);
 
             etNombre.setText("");
             etCategoria.setText("");
