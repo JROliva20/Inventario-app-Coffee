@@ -4,8 +4,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="cafe_oscuro">#5D4037</color>
     <color name="cafe_claro">#8D6E63</color>
-    <color name="crema">#FFF8E1</color>
+    <color name="crema">#F5EADB</color>
     <color name="blanco">#FFFFFF</color>
     <color name="negro">#212121</color>
-    <color name="naranja">#FF9800</color>
+    <color name="verde_principal">#748E7F</color>
+    <color name="verde_secundario">#5E7D6C</color>
+    <color name="verde_claro">#A6B5AC</color>
+    <color name="crema_fondo">#F7F2EA</color>
+    <color name="dorado_acento">#BF903F</color>
+    <color name="beige_calido">#EDDABC</color>
 </resources>

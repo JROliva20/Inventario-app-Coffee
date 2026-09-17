@@ -20,15 +20,19 @@ public class Activitylogin extends AppCompatActivity {
 
     TextInputEditText etUsuario;
     TextInputEditText etPassword;
-    MaterialButton btnIngresar;
     TextInputLayout tilUsuario;
     TextInputLayout tilPassword;
+    MaterialButton btnIngresar;
+    MaterialButton btnRegistro;
+    UsuarioDAO usuarioDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
+
+        usuarioDAO = new UsuarioDAO(this);
 
         etUsuario = findViewById(R.id.etUsuario);
         etPassword = findViewById(R.id.etPassword);
@@ -55,19 +59,36 @@ public class Activitylogin extends AppCompatActivity {
                 return;
             }
 
-            if(usuario.equals("admin") && password.equals("1234")) {
-                Toast.makeText(this,"Inicio de seción correcto \n ¡ Binvenido"  + usuario + "¡",Toast.LENGTH_SHORT).show();
+            Usuario usuarioEncontrado = usuarioDAO.validarLogin(usuario, password);
+            if(usuarioEncontrado != null){
+                Toast.makeText(
+                        this,
+                        "¡Bienvenido " + usuarioEncontrado.getNombre() + "!",
+                        Toast.LENGTH_SHORT
+                ).show();
 
                 Intent intent = new Intent(
                         Activitylogin.this,
                         MainActivity.class
                 );
 
+                intent.putExtra("nombre", usuarioEncontrado.getNombre());
+                intent.putExtra("rol", usuarioEncontrado.getRol());
+
                 startActivity(intent);
                 finish();
             } else {
                 Toast.makeText(this, "Usuario o Contraseña incorrectos", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        btnRegistro = findViewById(R.id.btnRegistro);
+        btnRegistro.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    Activitylogin.this,
+                    RegistroUsuarioActivity.class
+            );
+            startActivity(intent);
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

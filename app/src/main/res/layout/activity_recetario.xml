@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/crema_fondo"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/contenedorRecetario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:animateLayoutChanges="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recetario"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/cafe_oscuro"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recetas y preparación"
+            android:textSize="15sp"
+            android:textColor="@color/verde_secundario"
+            android:gravity="center"
+            android:layout_marginBottom="25dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCocina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/blanco"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/verde_claro">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnCocina"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="18dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:text="🍳"
+                        android:textSize="32sp"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cocina"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/verde_principal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Preparación de alimentos"
+                            android:textSize="13sp"
+                            android:textColor="@color/verde_secundario"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/flechaCocina"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:text="⌄"
+                        android:textSize="25sp"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/opcionesCocina"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:paddingBottom="15dp"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/verde_claro"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:id="@+id/btnRecetasOficiales"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="📖   Recetas oficiales"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10dp" />
+
+                    <TextView
+                        android:id="@+id/btnExplorarRecetas"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="🌐   Explorar recetas nuevas"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/dorado_acento"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBarra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/blanco"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/verde_claro">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnBebidas"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="18dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:text="☕"
+                        android:textSize="32sp"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Bebidas"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/verde_principal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Bebidas y café"
+                            android:textSize="13sp"
+                            android:textColor="@color/verde_secundario"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/flechaBebidas"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:text="⌄"
+                        android:textSize="25sp"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/opcionesBebidas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:paddingBottom="15dp"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/verde_claro"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:id="@+id/btnBebidasCalientes"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="🔥   Bebidas calientes"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10dp" />
+
+                    <TextView
+                        android:id="@+id/btnBebidasFrias"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="🧊   Bebidas frías"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10dp" />
+
+                    <TextView
+                        android:id="@+id/btnBebidasCafe"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="☕   Bebidas con café"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTuck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/blanco"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/verde_claro">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnPostres"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="18dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:text="🧇"
+                        android:textSize="32sp"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Postres"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/verde_principal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Waffles y crepas"
+                            android:textSize="13sp"
+                            android:textColor="@color/verde_secundario"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/flechaPostres"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:text="⌄"
+                        android:textSize="25sp"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/opcionesPostres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:paddingBottom="15dp"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/verde_claro"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:id="@+id/btnWaffles"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="🧇   Waffles"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10dp" />
+
+                    <TextView
+                        android:id="@+id/btnCrepas"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="🥞   Crepas"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_principal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegresar"
+            style="@style/Widget.Material3.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Regresar"
+            android:textColor="@color/verde_principal"
+            app:icon="@drawable/iconoatras"
+            app:iconTint="@color/verde_principal" />
+
+    </LinearLayout>
+
+</ScrollView>

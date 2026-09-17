@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:fitsSystemWindows="true"
-    android:background="@color/cafe_claro">
+    android:background="@color/crema_fondo">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,8 +19,8 @@
             android:id="@+id/imgLogo"
             android:layout_width="300dp"
             android:layout_height="150dp"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/logocafe"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/nuevologo"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,17 +28,18 @@
             android:layout_marginTop="20dp"
             android:text="Bienvenido"
             android:textSize="40sp"
-            android:textColor="@color/blanco"
+            android:textColor="@color/verde_principal"
             android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Ingresa tus credenciales para cotinuar"
+            android:gravity="center"
+            android:text="Ingresa tus credenciales para continuar"
             android:textSize="20sp"
             android:textStyle="normal"
-            android:textColor="@color/blanco"/>
+            android:textColor="@color/verde_secundario"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilUsuario"
@@ -47,16 +48,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:hint="Usuario"
+            android:textColorHint="@color/verde_principal"
             app:startIconDrawable="@drawable/user"
-            app:startIconTint="@color/blanco"
-            app:boxStrokeColor="@color/blanco"
-            app:hintTextColor="@color/blanco">
+            app:startIconTint="@color/verde_principal"
+            app:boxStrokeColor="@color/verde_secundario"
+            app:hintTextColor="@color/verde_principal">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/blanco"
+                android:textColor="@color/verde_principal"
+                android:textColorHint="@color/verde_secundario"
                 android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,18 +70,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="Contraseña"
+            android:textColorHint="@color/verde_principal"
             app:startIconDrawable="@drawable/password"
-            app:startIconTint="@color/blanco"
-            app:boxStrokeColor="@color/blanco"
-            app:hintTextColor="@color/blanco"
+            app:startIconTint="@color/verde_principal"
+            app:boxStrokeColor="@color/verde_secundario"
+            app:hintTextColor="@color/verde_principal"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/blanco">
+            app:endIconTint="@color/verde_principal">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:textColor="@color/blanco"
+                android:textColor="@color/verde_principal"
+                android:textColorHint="@color/verde_secundario"
                 android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,10 +94,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Ingresar"
-            android:textColor="@color/cafe_oscuro"
-            app:backgroundTint="@color/blanco"
+            android:textColor="@color/blanco"
+            app:backgroundTint="@color/verde_claro"
             app:icon="@drawable/iniciosecion"
-            app:iconTint="@color/cafe_oscuro" />
+            app:iconTint="@color/blanco" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegistro"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="¿Nuevo colaborador? Registrate"
+            android:textColor="@color/verde_principal" />
 
     </LinearLayout>
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ProductoDbHelper extends SQLiteOpenHelper {
 
     public ProductoDbHelper(Context context){
-        super(context, "apprestaurante.db", null, 1);
+        super(context, "apprestaurante.db", null, 3);
     }
 
     @Override
@@ -28,11 +28,30 @@ public class ProductoDbHelper extends SQLiteOpenHelper {
                 "imagenUri TEXT" +
                 ")";
         db.execSQL(sql);
+        String sqlUsuarios = "CREATE TABLE usuarios (" +
+        "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        "nombre TEXT, " +
+        "usuario TEXT, " +
+        "password TEXT, " +
+        "rol TEXT," +
+        "estado TEXT " +
+        ")";
+        db.execSQL(sqlUsuarios);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        if (oldVersion < 3){
+            String sqlUsuarios = "CREATE TABLE usuarios (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "nombre TEXT, " +
+                    "usuario TEXT, " +
+                    "password TEXT, " +
+                    "rol TEXT," +
+                    "estado TEXT " +
+                    ")";
+            db.execSQL(sqlUsuarios);
+        }
     }
 
     // insertar datos

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/cafe_claro"
+    android:background="@color/crema_fondo"
     android:padding="20dp">
 
     <ImageView
@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:src="@drawable/inventory"
-        app:tint="@color/blanco" />
+        app:tint="@color/dorado_acento" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,14 +23,14 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:textColor="@color/blanco"
+        android:textColor="@color/verde_secundario"
         android:layout_marginTop="15dp"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="15dp"
-        android:background="@color/blanco"/>
+        android:background="@color/verde_claro"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAgregar"
@@ -44,7 +44,7 @@
         app:icon="@drawable/mas"
         app:iconGravity="textStart"
         app:iconSize="32dp"
-        app:iconTint="@color/blanco"
+        app:iconTint="@color/verde_claro"
         app:strokeWidth="0dp" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,14 +55,17 @@
         android:layout_margin="10dp"
         android:hint="Buscar producto"
         app:startIconDrawable="@android:drawable/ic_menu_search"
-        app:startIconTint="@color/blanco"
-        app:boxStrokeColor="@color/blanco"
-        app:hintTextColor="@color/blanco">
+        app:startIconTint="@color/verde_secundario"
+        app:boxStrokeColor="@color/verde_secundario"
+        android:textColorHint="@color/verde_principal"
+        app:hintTextColor="@color/verde_secundario">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etBuscar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/verde_principal"
+            android:textColorHint="@color/verde_principal"
             android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -74,7 +77,7 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:text="Producto no encontrado"
-        android:textColor="@color/blanco"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:visibility="gone" />
 
@@ -84,7 +87,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
         android:text="Ordenar por:"
-        android:textColor="@color/blanco"
+        android:textColor="@color/verde_principal"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -93,7 +96,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/verde_secundario"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -114,7 +118,7 @@
         android:text="Regresar"
         app:icon="@android:drawable/ic_menu_close_clear_cancel"
         app:iconTint="@color/cafe_oscuro"
-        android:textColor="@color/cafe_oscuro"
+        android:textColor="@color/verde_principal"
         app:backgroundTint="@color/blanco"/>
 
 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/crema_fondo"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="15dp">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:src="@drawable/nuevologo"
+            android:contentDescription="Logo de The Corral Coffee" />
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestión de usuarios"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/verde_principal"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilBuscar"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Buscar usuario"
+        android:textColorHint="@color/verde_principal"
+        app:boxStrokeColor="@color/verde_secundario"
+        app:hintTextColor="@color/verde_principal"
+        app:startIconDrawable="@drawable/buscarusuario"
+        app:startIconTint="@color/verde_principal"
+        android:layout_marginBottom="12dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/verde_principal"
+            android:textColorHint="@color/verde_principal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNuevoUsuario"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="1dp"
+        android:text="Nuevo colaborador"
+        android:textColor="@color/verde_principal"
+        app:icon="@drawable/mas"
+        app:iconTint="@color/verde_principal"/>
+
+    <TextView
+        android:id="@+id/tvNoEncontrado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No se encontraron usuarios"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/verde_secundario"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Inicio"
+        app:icon="@drawable/inicio"
+        app:iconTint="@color/verde_principal"
+        app:iconSize="20sp"
+        android:textColor="@color/verde_principal"
+        android:textSize="17sp"
+        style="@style/Widget.Material3.Button.TextButton" />
+
+</LinearLayout>

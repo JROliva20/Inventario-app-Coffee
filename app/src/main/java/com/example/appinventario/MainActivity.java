@@ -1,8 +1,11 @@
 package com.example.appinventario;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
 import com.google.android.material.button.MaterialButton;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,17 +13,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
-//aca declare los botones
-    MaterialButton btnProductos;
-    MaterialButton btnAgregar;
-    MaterialButton btnEditar;
-    MaterialButton btnEliminarProducto;
-    MaterialButton btnInfo;
+    TextView tvSaludo;
+    TextView tvRol;
+    MaterialButton btnPedidos;
+    MaterialButton btnVentas;
+    MaterialButton btnMesas;
+    MaterialButton btnInventario;
+    MaterialButton btnReportes;
+    MaterialButton btnUsuarios;
+    MaterialButton btnRecetario;
+    MaterialButton btnAcercaDe;
     MaterialButton btnSalir;
-
 
 
     @Override
@@ -28,36 +32,59 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        //conecto los botones con el xml
-        btnProductos = findViewById(R.id.btnProductos);
-        btnAgregar = findViewById(R.id.btnAggProducto);
-        btnEditar = findViewById(R.id.btnEditarproducto);
-        btnEliminarProducto = findViewById(R.id.btnEliminarproducto);
-        btnInfo = findViewById(R.id.btnInfo);
+
+        tvSaludo = findViewById(R.id.tvSaludo);
+        tvRol = findViewById(R.id.tvRol);
+
+        String nombre = getIntent().getStringExtra("nombre");
+        String rol = getIntent().getStringExtra("rol");
+
+        if (nombre != null) {
+            tvSaludo.setText("¡Hola, " + nombre + "!");
+        }
+
+        if (rol != null) {
+            tvRol.setText(rol);
+        }
+
+        btnPedidos = findViewById(R.id.btnPedidos);
+        btnVentas = findViewById(R.id.btnVentas);
+        btnMesas = findViewById(R.id.btnMesas);
+        btnInventario = findViewById(R.id.btnInventario);
+        btnReportes = findViewById(R.id.btnReportes);
+        btnRecetario = findViewById(R.id.btnRecetario);
+        btnUsuarios = findViewById(R.id.btnUsuarios);
+        btnAcercaDe = findViewById(R.id.btnAcercaDe);
         btnSalir = findViewById(R.id.btnSalir);
-
-        btnProductos.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ProductosActivity.class);
+        btnInventario.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    ProductosActivity.class
+            );
             startActivity(intent);
         });
 
-        btnAgregar.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, AgregarProductoActivity.class);
+        btnUsuarios.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    UsuariosActivity.class
+            );
             startActivity(intent);
         });
 
-        btnEditar.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ProductosActivity.class);
+        btnRecetario.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    RecetarioActivity.class
+            );
             startActivity(intent);
         });
 
-        btnEliminarProducto.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ProductosActivity.class);
-            startActivity(intent);
-        });
-
-        btnInfo.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ActivityAcercade.class);
+        btnAcercaDe.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    ActivityAcercade.class
+            );
             startActivity(intent);
         });
 
@@ -70,12 +97,17 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         });
 
-        ArrayList<Producto> listaProductos = new ArrayList<>();
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        ViewCompat.setOnApplyWindowInsetsListener(
+                findViewById(R.id.main), (v, insets) -> {
+                    Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                    v.setPadding(
+                            systemBars.left,
+                            systemBars.top,
+                            systemBars.right,
+                            systemBars.bottom
+                    );
+                    return insets;
+                }
+        );
     }
 }
